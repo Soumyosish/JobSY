@@ -1,0 +1,27 @@
+/* Prevent horizontal scroll */
+html, body {
+  /* overflow-x: hidden; */
+  margin: 0;
+  padding: 0;
+}
+
+.fullpage-rounded {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  /* border-radius: 32px; */
+  box-shadow: 0 4px 32px rgba(59, 130, 246, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.fullpage-text {
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+

@@ -1,0 +1,131 @@
+.profile-page-container {
+  margin: 40px auto;
+  margin-left: 0;
+  background: rgba(24, 26, 32, 0.96);
+  color: #fff;
+  max-width: 600px;
+  width: 95vw;
+  border-radius: 18px;
+  border: 2.5px solid #ffe082;
+  box-shadow: 0 4px 32px #000a, 0 2px 16px #23272f44;
+  backdrop-filter: blur(8px);
+  padding: 28px 18px 18px 18px;
+}
+
+@media (min-width: 900px) {
+  .profile-page-container {
+    margin-left: 300px;
+  }
+}
+
+.profile-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.profile-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #ffe082;
+  font-size: 1.05rem;
+  gap: 6px;
+}
+
+.profile-form input {
+  background: #181a20;
+  color: #fff;
+  border: 2px solid #353945;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1.05rem;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  outline: none;
+  transition: border 0.2s;
+}
+.profile-form input:focus {
+  border: 2px solid #ffe082;
+}
+.profile-form input:read-only {
+  background: #23272f;
+  color: #b0b4bc;
+  border: 2px solid #353945;
+}
+
+.profile-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+.edit-btn, .save-btn {
+  background: #ffe082;
+  color: #23272f;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.edit-btn:hover, .save-btn:hover {
+  background: #ffd54f;
+  color: #181a20;
+}
+.cancel-btn {
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+.cancel-btn:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.profile-success {
+  margin-top: 14px;
+  color: #22c55e;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .profile-page-container {
+    max-width: 100vw;
+    padding: 12px 2vw 12px 2vw;
+    margin-left: 0;
+  }
+  .profile-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .profile-form label {
+    font-size: 0.98rem;
+  }
+  .profile-form input {
+    font-size: 0.98rem;
+    padding: 8px 8px;
+  }
+  .edit-btn, .save-btn, .cancel-btn {
+    padding: 8px 14px;
+    font-size: 0.98rem;
+  }
+} 

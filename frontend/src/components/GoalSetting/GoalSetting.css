@@ -1,0 +1,168 @@
+.goal-setting-container {
+  margin: 32px auto;
+  margin-left: 0;
+  background: rgba(24, 26, 32, 0.96);
+  color: #fff;
+  max-width: 900px;
+  width: 98vw;
+  border-radius: 18px;
+  border: 2.5px solid #ffe082;
+  box-shadow: 0 4px 32px #000a, 0 2px 16px #23272f44;
+  backdrop-filter: blur(8px);
+  padding: 40px 32px 32px 32px;
+}
+
+@media (min-width: 900px) {
+  .goal-setting-container {
+    margin-left: 300px;
+  }
+}
+
+.goal-setting-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.goal-setting-calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.goal-setting-calendar-nav button {
+  background: #353945;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.goal-setting-calendar-nav button:hover {
+  background: #ffe082;
+  color: #23272f;
+}
+.goal-setting-calendar-nav span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.goal-setting-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 32px;
+  min-height: 140px;
+}
+
+.goal-day {
+  width: 56px;
+  height: 56px;
+  background: #181a20;
+  color: #fff;
+  border: 2.5px solid #353945;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border 0.2s;
+}
+.goal-day.has-goal {
+  border: 2.5px solid #ffe082;
+  background: #23272f;
+}
+.goal-day.completed {
+  border: 2.5px solid #22c55e;
+  background: #1a2e1a;
+  color: #22c55e;
+}
+.goal-day:hover {
+  background: #353945;
+}
+.goal-complete-btn {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: none;
+  border: none;
+  color: #ffe082;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.goal-complete-btn:hover {
+  color: #22c55e;
+}
+
+.goal-setting-list {
+  margin-top: 28px;
+  background: #181a20;
+  border-radius: 10px;
+  padding: 20px 16px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.10);
+}
+.goal-setting-list-title {
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #ffe082;
+  font-size: 1.15rem;
+}
+.goal-setting-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.goal-setting-list li {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1.08rem;
+}
+.goal-setting-list li.completed span:first-child {
+  text-decoration: line-through;
+}
+.goal-setting-list li.completed .goal-status {
+  color: #22c55e;
+  font-weight: 600;
+  text-decoration: none;
+}
+.goal-status {
+  color: #22c55e;
+  font-weight: 600;
+}
+.goal-setting-empty {
+  color: #b0b4bc;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .goal-setting-container {
+    max-width: 100vw;
+    padding: 16px 2vw 16px 2vw;
+    margin-left: 0;
+  }
+  .goal-setting-title {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .goal-setting-calendar-nav span {
+    font-size: 1.1rem;
+  }
+  .goal-day {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+} 
