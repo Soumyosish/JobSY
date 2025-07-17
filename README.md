@@ -62,7 +62,7 @@ JobSY/
 
 ### 1. Clone the repository
 ```
-git clone https://github.com/yourusername/JobSY.git
+git clone https://github.com/Soumyosish/JobSY.git
 cd JobSY
 ```
 
