@@ -7,8 +7,7 @@ const path = require('path');
 const app = express();
 const allowedOrigins = [
   'http://localhost:5173', // Vite dev
-  'http://localhost:3000', // React dev (if used)
-  process.env.BASE_URL // Your deployed frontend URL from env
+  'https://jobsy-rose.vercel.app' // Your deployed frontend
 ];
 app.use(cors({
   origin: function(origin, callback) {
