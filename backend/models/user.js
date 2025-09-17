@@ -4,7 +4,10 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
-  resume: String // path to uploaded resume (optional)
+  resume: {
+    data: String, // Base64-encoded file data
+    contentType: String // MIME type of the file
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

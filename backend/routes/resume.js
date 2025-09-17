@@ -1,44 +1,50 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
 const auth = require('../middleware/auth');
 const User = require('../models/user');
+const fs = require('fs');
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) => cb(null, req.user._id + path.extname(file.originalname))
-});
-const upload = multer({ storage });
+const upload = multer({ storage: multer.memoryStorage() }); // Store file in memory
 
 // Upload resume
 router.post('/upload-resume', auth, upload.single('resume'), async (req, res) => {
-  req.user.resume = req.file.path;
-  await req.user.save();
-  res.json({ resume: req.file.path });
+  try {
+    const fileBuffer = req.file.buffer; // Get file buffer from memory
+    const base64File = fileBuffer.toString('base64'); // Convert to Base64 string
+    const fileMimeType = req.file.mimetype; // Get file MIME type
+
+    // Save Base64 string and MIME type in the user's document
+    req.user.resume = {
+      data: base64File,
+      contentType: fileMimeType
+    };
+    await req.user.save();
+
+    res.json({ message: 'Resume uploaded successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to upload resume' });
+  }
 });
 
-// Get resume path for current user
+// Get resume for the current user
 router.get('/me', auth, async (req, res) => {
-  if (req.user.resume) {
-    res.json({ resume: req.user.resume });
+  if (req.user.resume && req.user.resume.data) {
+    res.json({
+      resume: `data:${req.user.resume.contentType};base64,${req.user.resume.data}`
+    });
   } else {
-    res.json({ resume: null });
+    res.status(404).json({ message: 'No resume found' });
   }
 });
 
 // Delete resume
 router.delete('/delete', auth, async (req, res) => {
-  if (req.user.resume) {
-    try {
-      fs.unlinkSync(req.user.resume); // Remove file from disk
-    } catch (err) {
-      // File might not exist, ignore error
-    }
-    req.user.resume = '';
+  if (req.user.resume && req.user.resume.data) {
+    req.user.resume = null; // Remove resume from the user's document
     await req.user.save();
-    res.json({ message: 'Resume deleted' });
+    res.json({ message: 'Resume deleted successfully' });
   } else {
     res.status(404).json({ message: 'No resume to delete' });
   }
