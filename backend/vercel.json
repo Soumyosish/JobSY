@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "maxBodySize": "10mb"
+      }
     }
   ],
   "routes": [
@@ -11,12 +14,5 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "functions": {
-    "api/*.js": {
-      "maxDuration": 10,
-      "memory": 1024,
-      "maxBodySize": "10mb"
-    }
-  }
+  ]
 }
