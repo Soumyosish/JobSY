@@ -9,11 +9,11 @@ const Resume = () => {
   useEffect(() => {
     const fetchResume = async () => {
       const res = await fetch(`${API_BASE_URL}/api/resume/me`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
         const data = await res.json();
-        if (data.resume) setResumeUrl(`${API_BASE_URL}/${data.resume}`);
+        if (data.resume) setResumeUrl(data.resume); // Use the full URL from the backend
         else setResumeUrl(null);
       } else {
         setResumeUrl(null);
@@ -30,11 +30,11 @@ const Resume = () => {
       const res = await fetch(`${API_BASE_URL}/api/resume/upload-resume`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
-        body: formData
+        body: formData,
       });
       if (res.ok) {
         const data = await res.json();
-        setResumeUrl(`${API_BASE_URL}/${data.resume}`);
+        setResumeUrl(data.resume); // Use the full URL from the backend
       } else {
         alert('Failed to upload resume.');
       }
@@ -85,4 +85,4 @@ const Resume = () => {
   );
 };
 
-export default Resume; 
+export default Resume;

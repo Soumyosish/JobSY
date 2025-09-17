@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true },
-  password: String,
-  resume: {
-    data: String, // Base64-encoded file data
-    contentType: String // MIME type of the file
-  }
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  phone: { type: String },
+  resume: { type: String }, // Store file path instead of Base64 data
 });
 
 module.exports = mongoose.model('User', userSchema);
