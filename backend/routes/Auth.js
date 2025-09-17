@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
     user = new User({ name, email, password: await bcrypt.hash(password, 10) });
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
     res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
     res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
@@ -77,7 +77,7 @@ router.post('/forgot-password', async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) return res.status(200).json({ message: 'If the email exists, a reset link will be sent.' });
 
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5m' });
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
   const resetLink = `${process.env.BASE_URL}/reset-password/${token}`;
 
   // Debug log for environment variables
