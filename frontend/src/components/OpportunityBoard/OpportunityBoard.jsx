@@ -3,18 +3,18 @@ import './OpportunityBoard.css';
 
 const data = [
   {
-    month: 'July',
-    jobs: [
-      { company: 'Google', position: 'Software Engineer', type: 'Full Time', package: '₹30 LPA' },
-      { company: 'Amazon', position: 'SDE Intern', type: 'Internship', package: '₹1.2 L/month' },
-      { company: 'Microsoft', position: 'Product Manager', type: 'Full Time', package: '₹35 LPA' },
-    ],
-  },
-  {
     month: 'September',
     jobs: [
       { company: 'Samsung', position: 'Hardware Engineer', type: 'Full Time', package: '₹22 LPA' },
       { company: 'Adobe', position: 'UI/UX Intern', type: 'Internship', package: '₹90K/month' },
+    ],
+  },
+  {
+    month: 'October',
+    jobs: [
+      { company: 'Google', position: 'Software Engineer', type: 'Full Time', package: '₹30 LPA' },
+      { company: 'Amazon', position: 'SDE Intern', type: 'Internship', package: '₹1.2 L/month' },
+      { company: 'Microsoft', position: 'Product Manager', type: 'Full Time', package: '₹35 LPA' },
     ],
   },
   {
